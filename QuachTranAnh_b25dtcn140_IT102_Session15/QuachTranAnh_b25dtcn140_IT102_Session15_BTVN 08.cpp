@@ -1,19 +1,29 @@
-//Chua xoa duoc het
+
 #include<stdio.h>
 #include<stdlib.h>
 int removeDupe(int n, int arr[100],int delValue){
-	for(int i=delValue;i<n-1;i++){
-				arr[i]=arr[i+1];
+	for(int i=0;i<n;i++){
+				delValue=arr[i];
+				for(int j = i+1;j<n;j++){
+					if(delValue==arr[j]){
+						for(int k=j;k<n-1;k++){
+							arr[k]=arr[k+1];
+						}
+						n--;
+						j--;
+					}
+				}
 	}
-	return 1;
+	for(int i=0;i<n;i++){
+		printf("%d\t",arr[i]);
+	}
 }
 int main(){
 	int n,i,arr[100],delValue,choice;
 	do{
 		printf("\n1,Enter limit and elements\n");
-		printf("2.Print array out\n");
-		printf("3.Choose number to delete\n");
-		printf("4.Exit\n");
+		printf("2.Remove duplicate\n");
+		printf("3.Exit\n");
 		printf("Your choice: ");
 		scanf("%d",&choice);
 		switch(choice){
@@ -26,16 +36,9 @@ int main(){
 				}
 				break;
 			case 2:
-				for(i=0;i<n;i++){
-					printf("%d\t",arr[i]);
-				}
-				break;
-			case 3:
-				printf("Enter value: ");
-				scanf("%d",&delValue);
 				removeDupe(n,arr,delValue);
 				break;
-			case 4:
+			case 3:
 				printf("Thanks for using");
 				exit(0);
 				break;

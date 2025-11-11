@@ -5,7 +5,6 @@ int binary(int n, int arr[100], int searchValue){
 	int left = 0;
 	int right = n-1;
 	for(int i=0;i<n-1;i++){
-		for(int j = i+1;j<n-i-1;j++){
 			while(left<=right){
 				int mid = left + (right-left)/2;
 				if(arr[mid]=searchValue){
@@ -17,7 +16,6 @@ int binary(int n, int arr[100], int searchValue){
 					right = mid -1;
 				}
 			}
-		}
 	}
 	return -1;
 }
